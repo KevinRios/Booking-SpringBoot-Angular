@@ -24,6 +24,9 @@ public class Reservation {
 	@Column(name = "LOCATOR")
 	private String locator;
 	
+	@Column(name = "TURN")
+	private String turn;
+	
 	@Column(name = "PERSON")
 	private Long person;
 	
@@ -50,6 +53,15 @@ public class Reservation {
 
 	public void setLocator(String locator) {
 		this.locator = locator;
+	}
+	
+	
+	public String getTurn() {
+		return turn;
+	}
+
+	public void setTurn(String turn) {
+		this.turn = turn;
 	}
 
 	public Long getPerson() {
