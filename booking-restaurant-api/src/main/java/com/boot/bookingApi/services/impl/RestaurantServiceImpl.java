@@ -1,11 +1,11 @@
 package com.boot.bookingApi.services.impl;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.boot.bookingApi.dtos.NotFoundException;
 import com.boot.bookingApi.entities.Restaurant;
@@ -13,7 +13,9 @@ import com.boot.bookingApi.exceptions.BookingException;
 import com.boot.bookingApi.jsons.RestaurantRest;
 import com.boot.bookingApi.repositories.IRestaurantRepository;
 import com.boot.bookingApi.services.RestaurantService;
+import com.google.common.base.Optional;
 
+@Service
 public class RestaurantServiceImpl implements RestaurantService {
 
 	@Autowired
@@ -33,8 +35,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	private Restaurant getRestaurantEntity(Long restaurantId) throws BookingException {
-		return restaurantRepository.findById(restaurantId)
-				.orElseThrow(() -> new NotFoundException("SNOT-404-1", "RESTAURANT NOT FOUND"));
+		
+		Restaurant asd = restaurantRepository.findById(restaurantId)
+				.orElseThrow(() -> new NotFoundException("SNOT-404-1", "RESTAssssURANT NOT FOUND"));
+		return  asd;
 	}
 
 }

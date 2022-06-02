@@ -3,6 +3,7 @@ package com.boot.bookingApi.services.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.boot.bookingApi.dtos.NotFoundException;
 import com.boot.bookingApi.entities.Reservation;
@@ -17,6 +18,7 @@ import com.boot.bookingApi.repositories.IRestaurantRepository;
 import com.boot.bookingApi.repositories.ITurnRespository;
 import com.boot.bookingApi.services.ReservationService;
 
+@Service
 public class ReservationServiceImpl implements ReservationService {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ReservationServiceImpl.class);
