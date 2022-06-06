@@ -41,23 +41,26 @@ public class ReservationServiceImpl implements ReservationService {
 
 	public String createReservation(final CreateReservationRest createReservationRest) throws BookingException {
 
-		final Restaurant restaurantId = restaurantRepository.findById(createReservationRest.getRestaurantId())
+		// inicio validaciones 
+		// si existe el RESTAURANT y si existe el TURN
+		final Restaurant restaurant = restaurantRepository.findById(createReservationRest.getRestaurantId())
 				.orElseThrow(() -> new NotFountException("RESTAURANT_NOT_FOUND", "RESTAURANT_NOT_FOUND"));
 
 		final Turn turn = turnRepository.findById(createReservationRest.getTurnId())
 				.orElseThrow(() -> new NotFountException("TURN_NOT_FOUND", "TURN_NOT_FOUND"));
 
-		if (reservationRepository.findByTurnAndRestaurantId(turn.getName(), restaurantId.getId()).isPresent()) {
+		if (reservationRepository.findByTurnAndRestaurantId(turn.getName(), restaurant.getId()).isPresent()) {
 			throw new NotFountException("RESERVATION_ALREADT_EXIST", "RESERVATION_ALREADT_EXIST");
 		}
 
-		String locator = generateLocator(restaurantId, createReservationRest);
+		//fin validaciones
+		String locator = generateLocator(restaurant, createReservationRest);
 
 		final Reservation reservation = new Reservation();
 		reservation.setLocator(locator);
 		reservation.setPerson(createReservationRest.getPerson());
 		reservation.setDate(createReservationRest.getDate());
-		reservation.setRestaurant(restaurantId);
+		reservation.setRestaurant(restaurant);
 		reservation.setTurn(turn.getName());
 
 		try {
@@ -69,9 +72,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return locator;
 	}
 
-	private String generateLocator(final Restaurant restaurantId, final CreateReservationRest createReservationRest)
+	private String generateLocator(final Restaurant restaurant, final CreateReservationRest createReservationRest)
 			throws BookingException {
-		return restaurantId.getName() + createReservationRest.getTurnId();
+		return restaurant.getName() + createReservationRest.getTurnId();
 	}
 
 	private Reservation getReservationEntity(Long reservationId) throws BookingException {

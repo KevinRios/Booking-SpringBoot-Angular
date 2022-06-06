@@ -14,8 +14,8 @@ public class RestaurantRest {
 	@JsonProperty("name")
 	private String name;
 
-	@JsonProperty("address")
-	private String address;
+	@JsonProperty("adress")
+	private String adress;
 
 	@JsonProperty("description")
 	private String description;
@@ -42,12 +42,12 @@ public class RestaurantRest {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAdress() {
+		return adress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 
 	public String getDescription() {
