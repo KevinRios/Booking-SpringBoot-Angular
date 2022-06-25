@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.boot.bookingrestaurantapi.entities.Reservation;
 
 @Repository
-public interface ReservationRespository extends JpaRepository<Reservation, Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
 	Optional<Reservation> findById(Long id);
 

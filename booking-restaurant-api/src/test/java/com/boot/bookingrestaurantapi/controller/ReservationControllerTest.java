@@ -26,7 +26,7 @@ public class ReservationControllerTest {
 	
 	private static final Long RESTAURANT_ID = 1L;
 	private static final Date DATE = new Date();
-	private static final Long PERSON = 1L;
+	private static final Long PERSON = 25L;
 	private static final Long TURN_ID = 1L;
 	private static final String LOCATOR = "Burguer 2";
 

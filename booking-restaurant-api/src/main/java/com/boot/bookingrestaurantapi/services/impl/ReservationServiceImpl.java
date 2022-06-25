@@ -14,7 +14,7 @@ import com.boot.bookingrestaurantapi.exceptions.InternalServerErrorException;
 import com.boot.bookingrestaurantapi.exceptions.NotFountException;
 import com.boot.bookingrestaurantapi.jsons.CreateReservationRest;
 import com.boot.bookingrestaurantapi.jsons.ReservationRest;
-import com.boot.bookingrestaurantapi.repositories.ReservationRespository;
+import com.boot.bookingrestaurantapi.repositories.ReservationRepository;
 import com.boot.bookingrestaurantapi.repositories.RestaurantRepository;
 import com.boot.bookingrestaurantapi.repositories.TurnRepository;
 import com.boot.bookingrestaurantapi.services.ReservationService;
@@ -31,7 +31,7 @@ public class ReservationServiceImpl implements ReservationService {
 	private TurnRepository turnRepository;
 
 	@Autowired
-	private ReservationRespository reservationRepository;
+	private ReservationRepository reservationRepository;
 
 	public static final ModelMapper modelMapper = new ModelMapper();
 
