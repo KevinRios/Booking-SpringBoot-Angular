@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.boot.bookingrestaurantapi.exceptions.BookingException;
 import com.boot.bookingrestaurantapi.exceptions.InternalServerErrorException;
-import com.boot.bookingrestaurantapi.exceptions.NotFountException;
+import com.boot.bookingrestaurantapi.exceptions.NotFoundException;
 import com.boot.bookingrestaurantapi.repositories.ReservationRepository;
 import com.boot.bookingrestaurantapi.services.CancelReservationService;
 
@@ -22,7 +22,7 @@ public class CancelReservationServiceImpl implements CancelReservationService {
 	public String deleteReservation(String locator) throws BookingException {
 
 		reservationRespository.findByLocator(locator)
-				.orElseThrow(() -> new NotFountException("LOCATOR_NOT_FOUND", "LOCATOR_NOT_FOUND"));
+				.orElseThrow(() -> new NotFoundException("LOCATOR_NOT_FOUND", "LOCATOR_NOT_FOUND"));
 
 		try {
 			reservationRespository.deleteByLocator(locator);

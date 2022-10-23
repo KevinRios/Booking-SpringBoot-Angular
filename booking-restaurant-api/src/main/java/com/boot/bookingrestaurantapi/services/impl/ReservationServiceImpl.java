@@ -11,7 +11,7 @@ import com.boot.bookingrestaurantapi.entities.Restaurant;
 import com.boot.bookingrestaurantapi.entities.Turn;
 import com.boot.bookingrestaurantapi.exceptions.BookingException;
 import com.boot.bookingrestaurantapi.exceptions.InternalServerErrorException;
-import com.boot.bookingrestaurantapi.exceptions.NotFountException;
+import com.boot.bookingrestaurantapi.exceptions.NotFoundException;
 import com.boot.bookingrestaurantapi.jsons.CreateReservationRest;
 import com.boot.bookingrestaurantapi.jsons.ReservationRest;
 import com.boot.bookingrestaurantapi.repositories.ReservationRepository;
@@ -44,13 +44,13 @@ public class ReservationServiceImpl implements ReservationService {
 		// inicio validaciones 
 		// si existe el RESTAURANT y si existe el TURN
 		final Restaurant restaurant = restaurantRepository.findById(createReservationRest.getRestaurantId())
-				.orElseThrow(() -> new NotFountException("RESTAURANT_NOT_FOUND", "RESTAURANT_NOT_FOUND"));
+				.orElseThrow(() -> new NotFoundException("RESTAURANT_NOT_FOUND", "RESTAURANT_NOT_FOUND"));
 
 		final Turn turn = turnRepository.findById(createReservationRest.getTurnId())
-				.orElseThrow(() -> new NotFountException("TURN_NOT_FOUND", "TURN_NOT_FOUND"));
+				.orElseThrow(() -> new NotFoundException("TURN_NOT_FOUND", "TURN_NOT_FOUND"));
 
 		if (reservationRepository.findByTurnAndRestaurantId(turn.getName(), restaurant.getId()).isPresent()) {
-			throw new NotFountException("RESERVATION_ALREADT_EXIST", "RESERVATION_ALREADT_EXIST");
+			throw new NotFoundException("RESERVATION_ALREADY_EXIST", "RESERVATION_ALREADY_EXIST");
 		}
 
 		//fin validaciones
@@ -79,6 +79,6 @@ public class ReservationServiceImpl implements ReservationService {
 
 	private Reservation getReservationEntity(Long reservationId) throws BookingException {
 		return reservationRepository.findById(reservationId)
-				.orElseThrow(() -> new NotFountException("SNOT-404-1", "RESERVATION_NOT_FOUND"));
+				.orElseThrow(() -> new NotFoundException("SNOT-404-1", "RESERVATION_NOT_FOUND"));
 	}
 }

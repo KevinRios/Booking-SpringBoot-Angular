@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.boot.bookingrestaurantapi.entities.Restaurant;
 import com.boot.bookingrestaurantapi.exceptions.BookingException;
-import com.boot.bookingrestaurantapi.exceptions.NotFountException;
+import com.boot.bookingrestaurantapi.exceptions.NotFoundException;
 import com.boot.bookingrestaurantapi.jsons.RestaurantRest;
 import com.boot.bookingrestaurantapi.repositories.RestaurantRepository;
 import com.boot.bookingrestaurantapi.services.RestaurantService;
@@ -34,7 +34,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	private Restaurant getRestaurantEntity(Long restaurantId) throws BookingException {
 		return restaurantRepository.findById(restaurantId)
-				.orElseThrow(() -> new NotFountException("SNOT-404-1", "RESTAURANT_NOT_FOUND"));
+				.orElseThrow(() -> new NotFoundException("SNOT-404-1", "RESTAURANT_NOT_FOUND"));
 	}
 
 }
