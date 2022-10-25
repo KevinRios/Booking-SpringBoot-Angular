@@ -1,13 +1,27 @@
-# Booking-SpringBoot-Angular
-FullStack con Spring Boot Java 8 y Angular 9 Typescript 2022
+# Booking
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
-Aplicacion de un sistema de reservas para un restaurante.
+## Development server
 
-Se genera con SpringBoot 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Backend: SpringBoot Java 8 
-Frontend: TypeScript con Angular 9
-DB: Mysql
+## Code scaffolding
 
-Se van a realizar test unitarios de todos los controladores y servicios con las herramientas Junit y Mockito
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
