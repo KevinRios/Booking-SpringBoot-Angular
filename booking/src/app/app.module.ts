@@ -8,6 +8,9 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { CancelBookingComponent } from './components/cancel-booking/cancel-booking.component';
 import { HeaderComponent } from './components/header/header.component';
 import { Routes, RouterModule } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -27,8 +30,12 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes) 
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatCardModule,
+    NgbModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
